@@ -13,9 +13,7 @@ router = APIRouter()
 client = HttpClient('https://nominatim.openstreetmap.org')
 
 
-@router.get('/reverse', response_class=JSONResponse)
-@router.post('/reverse', response_class=JSONResponse)
-async def reverse(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
+def reverse_geocode(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
 	params = {
 		'lat': lat,
 		'lon': lon,
@@ -31,3 +29,13 @@ async def reverse(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
 	result = client.getJSON('/reverse', params=params)
 	database.set(key, 'nominatim', 'reverse', json.dumps(result))
 	return result
+
+
+@router.get('/reverse', response_class=JSONResponse)
+async def get_reverse_geocode(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
+	return reverse_geocode(lat=lat, lon=lon, zoom=zoom, namedetails=namedetails)
+
+
+@router.post('/reverse', response_class=JSONResponse)
+async def post__reverse_reverse(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
+	return reverse_geocode(lat=lat, lon=lon, zoom=zoom, namedetails=namedetails)
