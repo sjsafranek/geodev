@@ -1,5 +1,6 @@
 import json
 import datetime
+from pydantic import BaseModel
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
@@ -11,6 +12,13 @@ router = APIRouter()
 
 
 client = HttpClient('https://nominatim.openstreetmap.org')
+
+
+class Params(BaseModel):
+	lat: float
+	lon: float
+	namedetails: int
+	zoom: int
 
 
 def reverse_geocode(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
@@ -37,5 +45,5 @@ async def get_reverse_geocode(lat: float, lon: float, zoom: int = 22, namedetail
 
 
 @router.post('/reverse', response_class=JSONResponse)
-async def post__reverse_reverse(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
-	return reverse_geocode(lat=lat, lon=lon, zoom=zoom, namedetails=namedetails)
+async def post__reverse_reverse(params: Params):
+	return reverse_geocode(lat=params.lat, lon=params.lon, zoom=params.zoom, namedetails=params.namedetails)
