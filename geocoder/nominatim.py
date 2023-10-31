@@ -45,5 +45,5 @@ async def get_reverse_geocode(lat: float, lon: float, zoom: int = 22, namedetail
 
 
 @router.post('/reverse', response_class=JSONResponse)
-async def post__reverse_reverse(params: Params):
+async def post_reverse_geocode(params: Params):
 	return reverse_geocode(lat=params.lat, lon=params.lon, zoom=params.zoom, namedetails=params.namedetails)
