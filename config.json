@@ -1,0 +1,10 @@
+{
+	"database": {
+		"engine": "postgresql",
+		"host": "localhost",
+		"name": "geodev",
+		"user": "geodev",
+		"pass": "dev",
+		"port": 5432
+	}
+}

@@ -1,0 +1,11 @@
+
+DROP TABLE IF EXISTS geocodes CASCADE;
+
+
+CREATE UNLOGGED TABLE geocodes (
+	id 			TEXT PRIMARY KEY,
+	source 		VARCHAR(64) NOT NULL,
+	type    	VARCHAR(16) NOT NULL,
+	value 		JSONB,
+	created_at 	TIMESTAMP DEFAULT NOW()
+);
