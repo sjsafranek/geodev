@@ -15,13 +15,13 @@ client = HttpClient('https://nominatim.openstreetmap.org')
 
 @router.get('/reverse', response_class=JSONResponse)
 @router.post('/reverse', response_class=JSONResponse)
-async def reverse(lat: float, lon: float, zoom: int = 22):
+async def reverse(lat: float, lon: float, zoom: int = 22, namedetails: int = 1):
 	params = {
 		'lat': lat,
 		'lon': lon,
 		'format': 'json',
 		'zoom': zoom,
-		'namedetails': 1
+		'namedetails': namedetails
 	}
 	salt = 'nominatim-reverse-{0}'.format(json.dumps(params))
 	key = '{0}'.format(crypto.md5(salt))
