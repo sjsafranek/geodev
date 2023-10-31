@@ -1,6 +1,6 @@
 
 import requests
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 from functools import lru_cache
 
 #from logger import logger
@@ -18,10 +18,10 @@ class HttpClient(object):
         uri = '{0}{1}'.format(self.base_url, endpoint)
         return self.session.get(uri, headers=headers, params=params)
 
-    def getHTML(self, endpoint, **kwargs):
-        return BeautifulSoup(
-                    self.get(endpoint, **kwargs).text,
-                    'html.parser')
+    # def getHTML(self, endpoint, **kwargs):
+    #     return BeautifulSoup(
+    #                 self.get(endpoint, **kwargs).text,
+    #                 'html.parser')
 
     def getJSON(self, endpoint, **kwargs):
         return self.get(endpoint, **kwargs).json()
