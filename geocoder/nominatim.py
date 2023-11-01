@@ -16,7 +16,7 @@ client = HttpClient('https://nominatim.openstreetmap.org')
 
 
 def send(endpoint, params={}):
-	salt = 'nominatim-{0}-{1}'.format(endpoint, json.dumps(params))
+	salt = 'nominatim-{0}-{1}'.format(endpoint[1:], json.dumps(params))
 	key = '{0}'.format(crypto.md5(salt))
 	value = database.get(key)
 	if value is not None:
