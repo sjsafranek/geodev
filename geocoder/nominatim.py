@@ -27,26 +27,17 @@ def send(endpoint, params={}):
 
 
 def reverse(params: models.ReverseParams):
-	params = {
+	return send('/reverse', params={
 		'format': 'json',	
 		'lat': params.lat,
 		'lon': params.lon,
 		'zoom': params.zoom,
 		'namedetails': params.namedetails
-	}
-	return send('/reverse', params=params)
-	# salt = 'nominatim-reverse-{0}'.format(json.dumps(params))
-	# key = '{0}'.format(crypto.md5(salt))
-	# value = database.get(key)
-	# if value is not None:
-	# 	return value[0]
-	# result = client.getJSON('/reverse', params=params)
-	# database.set(key, 'nominatim', 'reverse', json.dumps(result))
-	# return result
+	})
 
 
 def geocode(params: models.SearchParams):
-	params = {
+	return send('/search', params={
 		'format': 'json',
 		'q': params.q, 
 		'amenity': params.amenity, 
@@ -55,17 +46,9 @@ def geocode(params: models.SearchParams):
 		'county': params.county, 
 		'state': params.state, 
 		'country': params.country, 
-		'postalcode': params.postalcode
-	}
-	return send('/search', params=params)
-	# salt = 'nominatim-search-{0}'.format(json.dumps(params))
-	# key = '{0}'.format(crypto.md5(salt))
-	# value = database.get(key)
-	# if value is not None:
-	# 	return value[0]
-	# result = client.getJSON('/search', params=params)
-	# database.set(key, 'nominatim', 'search', json.dumps(result))
-	# return result
+		'postalcode': params.postalcode,
+		'namedetails': params.namedetails
+	})
 
 
 @router.post('/reverse', response_class=JSONResponse)
