@@ -10,7 +10,6 @@ from datasources.models.datasource import Datasource
 from datasources.models.tile_layer import TileLayer
 from models.response import ApiStatus
 from models.response import ApiResponse
-# from datasources import tile_proxy
 
 
 router = APIRouter()
