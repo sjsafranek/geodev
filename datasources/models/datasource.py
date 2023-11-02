@@ -19,5 +19,7 @@ class Datasource(BaseModel):
 	created_at: datetime
 	updated_at: datetime
 
-	# @staticmethod
-	# from_dict(data):
+	@property
+	def has_tiles(self):
+	    return self.type in ['TiledMapService', 'MapboxVectorTile']
+
