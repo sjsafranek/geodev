@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 from utils import crypto
 from geocoder import models
-from geocoder import database
+from geocoder import geocode_cache
 from utils.HttpClient import HttpClient
 
 
@@ -18,11 +18,11 @@ client = HttpClient('https://nominatim.openstreetmap.org')
 def send(endpoint, params={}):
 	salt = 'nominatim-{0}-{1}'.format(endpoint[1:], json.dumps(params))
 	key = '{0}'.format(crypto.md5(salt))
-	value = database.get(key)
+	value = geocode_cache.get(key)
 	if value is not None:
 		return value[0]
 	result = client.getJSON(endpoint, params=params)
-	database.set(key, 'nominatim', endpoint[1:], json.dumps(result))
+	geocode_cache.set(key, 'nominatim', endpoint[1:], json.dumps(result))
 	return result
 
 

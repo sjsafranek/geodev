@@ -4,7 +4,8 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.gzip import GZipMiddleware
 
 import datasources
-import geocoder.router
+# import geocoder.router
+import geocoder
 from models.response import ApiStatus
 from models.response import ApiResponse
 
@@ -13,8 +14,9 @@ app = FastAPI(title="GeoDev")
 
 app.add_middleware(GZipMiddleware, minimum_size=500)
 
-app.include_router(geocoder.router.new(), prefix='/api/v1/geocoder')
+# app.include_router(geocoder.router.new(), prefix='/api/v1/geocoder')
 
+geocoder.attach(app, prefix='/api/v1/geocoder')
 datasources.attach(app, prefix='/api/v1/datasources')
 
 
