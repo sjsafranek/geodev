@@ -22,7 +22,7 @@ def send(endpoint, params={}):
 	if value is not None:
 		return value[0]
 	result = client.getJSON(endpoint, params=params)
-	database.set(key, 'nominatim', endpoint, json.dumps(result))
+	database.set(key, 'nominatim', endpoint[1:], json.dumps(result))
 	return result
 
 
