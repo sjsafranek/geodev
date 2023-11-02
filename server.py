@@ -18,6 +18,7 @@ app.include_router(geocoder.router.new(), prefix='/api/v1/geocoder')
 datasources.attach(app, prefix='/api/v1/datasources')
 
 
+
 async def internal_server_exception_handler(request: Request, exc: Exception):
     response = ApiResponse(status=ApiStatus.error, message=str(exc))
     return JSONResponse(

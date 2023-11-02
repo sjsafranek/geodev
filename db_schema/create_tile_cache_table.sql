@@ -4,9 +4,10 @@ DROP TABLE IF EXISTS tile_cache CASCADE;
 
 CREATE UNLOGGED TABLE tile_cache (
 	datasource_id	VARCHAR NOT NULL,
+	z 				INTEGER NOT NULL,	
 	x 				INTEGER NOT NULL,
 	y 				INTEGER NOT NULL,
-	z 				INTEGER NOT NULL,
+	mime_type		VARCHAR NOT NULL,
 	tile 			BYTEA,
 	created_at 		TIMESTAMP DEFAULT NOW(),
 	expires_at 		TIMESTAMP DEFAULT NOW() + '1 month',
