@@ -20,5 +20,5 @@ CREATE TRIGGER datasource_update BEFORE UPDATE ON datasource FOR EACH ROW EXECUT
 
 CREATE INDEX idx_datasource_name ON datasource(name);
 
-INSERT INTO datasource(name, type, source) VALUES ('openstreetmap', ' TiledMapService', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png');
+INSERT INTO datasource(name, type, source) VALUES ('openstreetmap', 'TiledMapService', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png');
 
