@@ -17,6 +17,7 @@ set client_min_messages to 'warning';
 
 -- create tables
 \i create_config_table.sql
+\i create_credentials_table.sql
 \i create_geocodes_table.sql
 \i create_datasource_table.sql
 \i create_tile_cache_table.sql

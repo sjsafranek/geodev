@@ -7,3 +7,4 @@ with open('config.json', 'r') as fh:
 
 
 DATABASE = config['database']
+DATA_DIRECTORY = config['app']['data_directory']

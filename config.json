@@ -1,4 +1,7 @@
 {
+	"app": {
+		"data_directory": "data"
+	},
 	"database": {
 		"engine": "postgresql",
 		"host": "localhost",
