@@ -14,5 +14,5 @@ DATA_DIRECTORY = config['app']['data_directory']
 def get_credential(name):
 	with db.open() as conn:
 		cursor = conn.cursor()
-		cursor.execute('''SELECT data FROM credentials WHERE name = %s;''', name)
+		cursor.execute('''SELECT data FROM credentials WHERE name = %s;''', (name,))
 		return cursor.fetchone()[0]
