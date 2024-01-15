@@ -1,4 +1,3 @@
-import os
 import json
 import time
 import datetime
@@ -7,13 +6,13 @@ import geopandas
 from shapely import wkt
 from shapely.geometry import Point
 
+import conf
 import crypto
 from openweatherapi import database
 from utils.HttpClient import HttpClient
-import conf
 
 
-OPENWEATHERAPI_APIKEY = conf.get_credential("openweatherapi")
+OPENWEATHERAPI_APIKEY = conf.get_credential("openweatherapi")['apikey']
 MAX_AGE = datetime.timedelta(seconds=3600)
 BASE_URL = "https://api.openweathermap.org"
 
@@ -31,7 +30,6 @@ def _get(key):
 
 
 def _set(key, gdf):
-    # database.insertWeatherGeoDataFrame(gdf)    
     data = gdf.to_dict()
     geometry = {}
     for _id in data['geometry']:

@@ -3,9 +3,9 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.gzip import GZipMiddleware
 
-import datasources
-# import geocoder.router
-import geocoder
+import services.datasources as datasources
+import services.geocoder as geocoder
+import services.routing as routing
 from models.response import ApiStatus
 from models.response import ApiResponse
 
@@ -18,7 +18,7 @@ app.add_middleware(GZipMiddleware, minimum_size=500)
 
 geocoder.attach(app, prefix='/api/v1/geocoder')
 datasources.attach(app, prefix='/api/v1/datasources')
-
+routing.attach(app, prefix='/api/v1/routing')
 
 
 async def internal_server_exception_handler(request: Request, exc: Exception):
@@ -29,3 +29,4 @@ async def internal_server_exception_handler(request: Request, exc: Exception):
     )
 
 app.add_exception_handler(Exception, internal_server_exception_handler)
+

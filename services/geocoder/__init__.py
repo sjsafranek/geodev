@@ -1,5 +1,5 @@
 
-from geocoder import endpoints
+from services.geocoder import endpoints
 
 
 def attach(app, prefix=None):

@@ -1,6 +1,6 @@
 
-from datasources.models.datasource import Datasource
-from datasources.models.tile_layer import TileLayer
+from services.datasources.models.datasource import Datasource
+from services.datasources.models.tile_layer import TileLayer
 
 
 def from_dict(data):

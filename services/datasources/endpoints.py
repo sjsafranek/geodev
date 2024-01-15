@@ -4,9 +4,9 @@ from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.responses import Response
 
-from datasources import database
-from datasources import exceptions
-import datasources.models as models
+from services.datasources import database
+from services.datasources import exceptions
+import services.datasources.models as models
 from models.response import ApiStatus
 from models.response import ApiResponse
 

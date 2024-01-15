@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from datasources import endpoints
-from datasources import exceptions
+from services.datasources import endpoints
+from services.datasources import exceptions
 
 
 def attach(app, prefix=None):

@@ -1,7 +1,7 @@
 import os.path
 from urllib.parse import urlsplit
 
-from datasources import tile_cache
+from services.datasources import tile_cache
 from utils.HttpClient import HttpClient
 
 

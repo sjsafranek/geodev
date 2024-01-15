@@ -1,6 +1,6 @@
 
-from datasources import tile_proxy
-from datasources.models.datasource import Datasource
+from services.datasources import tile_proxy
+from services.datasources.models.datasource import Datasource
 
 
 class TileLayer(Datasource):

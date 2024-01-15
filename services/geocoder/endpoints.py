@@ -4,8 +4,8 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from utils import crypto
-from geocoder import models
-from geocoder import geocode_cache
+from services.geocoder import models
+from services.geocoder import geocode_cache
 from utils.HttpClient import HttpClient
 
 
