@@ -15,6 +15,7 @@ router = APIRouter()
 
 @router.post('/find', response_class=JSONResponse)
 async def post_find(params: models.WeatherParams):
+	print(json.dumps(params))
 	gdf = OpenWeatherApi.getWeatherAroundPoint(Point(params.longitude, params.latitude), radius=params.radius, precision=params.precision)
 	return json.loads(gdf.to_json())
 
