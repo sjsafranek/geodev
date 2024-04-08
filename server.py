@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi import Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.gzip import GZipMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 import services.datasources as datasources
 import services.geocoder as geocoder
@@ -16,6 +17,13 @@ app = FastAPI(title="GeoDev")
 
 app.add_middleware(GZipMiddleware, minimum_size=500)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 datasources.attach(app, prefix='/api/v1/datasources')
 geocoder.attach(app, prefix='/api/v1/geocoder')
