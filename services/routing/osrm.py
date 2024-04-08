@@ -27,8 +27,8 @@ def route(path):
     coordinates = []
     for leg in response['routes'][0]['legs']:
         for step in leg['steps']:
-            for i in range(len(step['geometry']['coordinates'])):
-                step['geometry']['coordinates'][i].reverse()
+            # for i in range(len(step['geometry']['coordinates'])):
+            #     step['geometry']['coordinates'][i].reverse()
             coordinates += step['geometry']['coordinates']
     return {'type': 'LineString', 'coordinates': coordinates}
 
